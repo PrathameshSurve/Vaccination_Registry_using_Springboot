@@ -25,6 +25,9 @@ public class userDetails {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "mobile")
+    private String mobile;
+
     @Column(name = "vaccine_name")
     private String vaccineName;
 
@@ -32,10 +35,11 @@ public class userDetails {
         // Default constructor
     }
 
-    public userDetails(String idType, String idDetails, String name, String vaccineName) {
+    public userDetails(String idType, String idDetails, String name, String mobile, String vaccineName) {
         this.idType = idType;
         this.idDetails = idDetails;
         this.name = name;
+        this.mobile = mobile;
         this.vaccineName = vaccineName;
     }
 
@@ -73,6 +77,14 @@ public class userDetails {
         this.name = name;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     public String getVaccineName() {
         return vaccineName;
     }
@@ -80,4 +92,5 @@ public class userDetails {
     public void setVaccineName(String vaccineName) {
         this.vaccineName = vaccineName;
     }
+
 }

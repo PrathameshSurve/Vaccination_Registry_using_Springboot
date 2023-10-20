@@ -29,37 +29,66 @@
             <div class="form-container">
                 <form action="/registrationSuccessful" method="post">
                     <label for="idType">ID Type:</label>
-                    <select id="idType" name="idType">
+                    <select id="idType" name="idType" required>
                         <option value="AadharCard">Aadhar Card</option>
                         <option value="PanCard">PAN Card</option>
                         <option value="VotingCard">Voting Card</option>
                     </select>
                     <br>
-            
+                
                     <label for="idDetails">ID Details:</label>
                     <input type="text" id="idDetails" name="idDetails" required>
                     <br>
-            
+
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="number" id="mobile" name="mobile" required>
+                    <br>
+                
                     <label>Vaccine Name:</label>
                     <div>
-                        <input type="radio" id="covaxin" name="vaccineName" value="Covaxin">
+                        <input type="radio" id="covaxin" name="vaccineName" value="Covaxin" required>
                         <label for="covaxin">Covaxin</label>
                     </div>
-            
+                
                     <div>
-                        <input type="radio" id="covishield" name="vaccineName" value="Covishield">
+                        <input type="radio" id="covishield" name="vaccineName" value="Covishield" required>
                         <label for="covishield">Covishield</label>
                     </div>
-            
+                
                     <div>
-                        <input type="radio" id="sputnik" name="vaccineName" value="Sputnik">
+                        <input type="radio" id="sputnik" name="vaccineName" value="Sputnik" required>
                         <label for="sputnik">Sputnik</label>
                     </div>
-            
+                
                     <br>
-            
+                
                     <input type="submit" value="Submit">
                 </form>
+
+                <hr>
+
+                <h3>Registered Users:</h3>
+                <table>
+                    <tr>
+                        <th>ID Type</th>
+                        <th>ID Details</th>
+                        <th>Mobile</th>
+                        <th>Name</th>
+                        <th>Vaccine Name</th>
+                    </tr>
+                    <tr th:each="user : ${allUsers}">
+                        <td th:text="${user.idType}"></td>
+                        <td th:text="${user.idDetails}"></td>
+                        <td th:text="${user.mobile}"></td>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.vaccineName}"></td>
+                    </tr>
+                </table>
+                
     
             </div>
         </div>

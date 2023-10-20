@@ -1,5 +1,7 @@
 package com.vaccination_details.vaccination.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +18,6 @@ public class oneController {
     @Autowired
     private servicesIMPL userService;
 
-    // @GetMapping("/index")
-    // public String getIndex() {
-    // return "index";
-    // }
-
     @GetMapping("/index")
     public String showRegistrationForm(Model model) {
         model.addAttribute("userDetails", new userDetails());
@@ -28,10 +25,13 @@ public class oneController {
     }
 
     @PostMapping("/registrationSuccessful")
-    public String signUpSuccessful(@ModelAttribute userDetails user) {
+    public String registrationSuccessful(@ModelAttribute userDetails user, Model model) {
         userService.addUser(user);
 
-        return "registrationSuccessful";
+        List<userDetails> allUsers = userService.getAllUsers();
+        model.addAttribute("allUsers", allUsers);
+
+        return "index";
     }
 
 }
