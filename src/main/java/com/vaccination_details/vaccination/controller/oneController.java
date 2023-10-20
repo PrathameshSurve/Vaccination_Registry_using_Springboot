@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.vaccination_details.vaccination.model.userDetails;
 import com.vaccination_details.vaccination.service.servicesIMPL;
@@ -25,8 +26,14 @@ public class oneController {
     }
 
     @PostMapping("/registrationSuccessful")
-    public String registrationSuccessful(@ModelAttribute userDetails user, Model model) {
-        userService.addUser(user);
+    public String registrationSuccessful(@ModelAttribute userDetails user, @RequestParam String action, Model model) {
+        if ("Add User".equals(action)) {
+            userService.addUser(user);
+        } else if ("Delete User".equals(action)) {
+            // Delete user logic
+        } else if ("Update User".equals(action)) {
+            // Update user logic
+        }
 
         List<userDetails> allUsers = userService.getAllUsers();
         model.addAttribute("allUsers", allUsers);
