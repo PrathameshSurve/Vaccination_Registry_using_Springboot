@@ -21,6 +21,12 @@ public class oneController {
     // return "index";
     // }
 
+    @GetMapping("/index")
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("userDetails", new userDetails());
+        return "index";
+    }
+
     @PostMapping("/registrationSuccessful")
     public String signUpSuccessful(@ModelAttribute userDetails user) {
         userService.addUser(user);
@@ -28,9 +34,4 @@ public class oneController {
         return "registrationSuccessful";
     }
 
-    @GetMapping("/index")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("userDetails", new userDetails());
-        return "registrationForm";
-    }
 }
