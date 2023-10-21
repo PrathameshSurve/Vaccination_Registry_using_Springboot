@@ -1,0 +1,75 @@
+*{
+    /* border: 1px solid red; */
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 16px;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+nav{
+    background-color: #333;
+    color: aliceblue;
+    height: 40px;
+}
+
+nav h3{
+    text-align: center;  
+    font-size: 2rem;
+}
+
+.heading{
+    text-align: center;
+    padding: 10px 0px;  
+}
+
+.form-container{
+    align-items: center; 
+    display: flex;
+    margin: 30px 0px;
+    padding: 20px 0px;
+}
+
+.form-container .formbox{
+    background-color: antiquewhite;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 20px;
+    border: pink 1px solid;
+}
+
+label{
+color: #333;
+}
+
+/* Add borders to the table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #dddddd;
+}
+
+
+th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
+
+td {
+    border: 1px solid #dddddd; 
+    padding: 8px;
+}
+
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}

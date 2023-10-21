@@ -1,102 +1,108 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
     <title>Vaccination Home</title>
-    <style>
-        nav{
-            background-color: #333;
-            color: aliceblue;
-        }
-    </style>
 </head>
+
 <body>
     <!-- Navigation bar -->
     <header>
-        <nav>
+        <nav class="logo">
             <h3>Vaccination India</h3>
         </nav>
     </header>
-<!-- Main Body -->
+    <!-- Main Body -->
     <main>
         <div class="page">
             <div class="heading">
                 <h1>Welcome to Vaccination Registry Control</h1>
             </div>
-    
+
             <div class="form-container">
-                <form action="/registrationSuccessful" method="post">
-                    <label for="idType">ID Type:</label>
-                    <select id="idType" name="idType" required>
-                        <option value="AadharCard">Aadhar Card</option>
-                        <option value="PanCard">PAN Card</option>
-                        <option value="VotingCard">Voting Card</option>
-                    </select>
-                    <br>
-                
-                    <label for="idDetails">ID Details:</label>
-                    <input type="text" id="idDetails" name="idDetails" required>
-                    <br>
+                <div class="formbox">
+                    <form action="/registrationSuccessful" method="post">
+                        <label for="idType">ID Type</label>
+                        <br>
+                        <select id="idType" name="idType" required>
+                            <option value="AadharCard">Aadhar Card</option>
+                            <option value="PanCard">PAN Card</option>
+                            <option value="VotingCard">Voting Card</option>
+                        </select>
+                        <br>
+                        <label for="idDetails">ID Details</label>
+                        <br>
+                        <input type="text" id="idDetails" name="idDetails" required>
+                        <br>
 
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <br>
+                        <label for="name">Name</label>
+                        <br>
+                        <input type="text" id="name" name="name" required>
+                        <br>
 
-                    <label for="mobile">Mobile Number:</label>
-                    <input type="number" id="mobile" name="mobile" required>
-                    <br>
-                
-                    <label>Vaccine Name:</label>
-                    <div>
-                        <input type="radio" id="covaxin" name="vaccineName" value="Covaxin" required>
-                        <label for="covaxin">Covaxin</label>
-                    </div>
-                
-                    <div>
-                        <input type="radio" id="covishield" name="vaccineName" value="Covishield" required>
-                        <label for="covishield">Covishield</label>
-                    </div>
-                
-                    <div>
-                        <input type="radio" id="sputnik" name="vaccineName" value="Sputnik" required>
-                        <label for="sputnik">Sputnik</label>
-                    </div>
-                
-                    <br>
-                
-                    <input type="submit" name="action" value="Add User">
-                    <input type="submit" name="action" value="Delete User">
-                    <input type="submit" name="action" value="Update User">
-                </form>
+                        <label for="mobile">Mobile Number</label>
+                        <br>
+                        <input type="number" id="mobile" name="mobile" required>
+                        <br>
 
-                <hr>
+                        <label>Vaccine Name</label>
+                        <br>
+                        <div>
+                            <input type="radio" id="covaxin" name="vaccineName" value="Covaxin" required>
+                            <label for="covaxin">Covaxin</label>
+                        </div>
 
-                <h3>Registered Users:</h3>
-                <table>
-                    <tr>
-                        <th>ID Type</th>
-                        <th>ID Details</th>
-                        <th>Mobile</th>
-                        <th>Name</th>
-                        <th>Vaccine Name</th>
-                    </tr>
-                    <tr th:each="user : ${allUsers}">
-                        <td th:text="${user.idType}"></td>
-                        <td th:text="${user.idDetails}"></td>
-                        <td th:text="${user.mobile}"></td>
-                        <td th:text="${user.name}"></td>
-                        <td th:text="${user.vaccineName}"></td>
-                    </tr>
-                </table>
-                
-    
+                        <div>
+                            <input type="radio" id="covishield" name="vaccineName" value="Covishield" required>
+                            <label for="covishield">Covishield</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="sputnik" name="vaccineName" value="Sputnik" required>
+                            <label for="sputnik">Sputnik</label>
+                        </div>
+
+                        <br>
+
+                        <input type="submit" name="action" value="Add User">
+                        <input type="submit" name="action" value="Delete User">
+                        <input type="submit" name="action" value="Update User">
+                    </form>
+
+                </div>
             </div>
+
+            <hr>
+
+            <h3>Registered Users:</h3>
+            <table>
+                <tr>
+                    <th>ID Type</th>
+                    <th>ID Details</th>
+                    <th>Mobile</th>
+                    <th>Name</th>
+                    <th>Vaccine Name</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="user : ${allUsers}">
+                    <td th:text="${user.idType}"></td>
+                    <td th:text="${user.idDetails}"></td>
+                    <td th:text="${user.mobile}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.vaccineName}"></td>
+                    <td><input type="submit" name="action" value="Delete User"></td>
+                </tr>
+            </table>
+
         </div>
     </main>
-<!-- Footer -->
+    <!-- Footer -->
     <footer></footer>
-    
+
 </body>
+
 </html>
